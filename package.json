@@ -1,0 +1,47 @@
+{
+  "name": "world-clockify",
+  "version": "1.0.0",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "ci": "npm run check-format"
+  },
+  "files": [
+    "dist",
+    "REDME.md"
+  ],
+  "keywords": [
+    "world",
+    "clockify",
+    "time",
+    "zone",
+    "converter"
+  ],
+  "homepage": "https://github.com/shivam-sharma7/world-clockify",
+  "repository": {
+    "url": "https://github.com/shivam-sharma7/world-clockify"
+  },
+  "bugs": {
+    "url": "https://github.com/shivam-sharma7/world-clockify/issues"
+  },
+  "author": "Shivam Sharma",
+  "license": "MIT",
+  "description": "world-clockify is a utility package that handles complex timezone-based date operations.",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.2"
+  },
+  "dependencies": {
+    "@types/luxon": "^3.4.2",
+    "luxon": "^3.5.0"
+  }
+}
