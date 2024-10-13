@@ -24,12 +24,13 @@
   ],
   "homepage": "https://github.com/shivam-sharma7/world-clockify",
   "repository": {
-    "url": "https://github.com/shivam-sharma7/world-clockify"
+    "type": "git",
+    "url": "git+https://github.com/shivam-sharma7/world-clockify.git"
   },
   "bugs": {
     "url": "https://github.com/shivam-sharma7/world-clockify/issues"
   },
-  "author": "Shivam Sharma",
+  "author": "Shivam Sharma <meshivam81@gmail.com>",
   "license": "MIT",
   "description": "world-clockify is a utility package that handles complex timezone-based date operations.",
   "type": "module",
