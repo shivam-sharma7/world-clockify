@@ -31,7 +31,7 @@ yarn add world-clockify
 After installation, you can use the library as follows:
 
 ```javascript
-import { convertTimeZone, getCurrentTimeInZone, getTimeDifference } from 'world-clockify';
+import { convertTimeZone, getCurrentTimeInZone, getTimeDifference, formatDateInTimeZone } from 'world-clockify';
 
 // Convert time between timezones
 const convertedTime = convertTimeZone('2024-01-01T12:00:00', 'America/New_York', 'Europe/London');
@@ -44,4 +44,12 @@ console.log(currentTime); // Outputs the current time in ISO format
 // Calculate time difference between two timezones
 const timeDifference = getTimeDifference('America/New_York', 'Europe/London');
 console.log(timeDifference); // Outputs: 5 (hours)
+
+const dateStr = '2024-10-14T12:00:00';
+const fromZone = 'UTC';
+const toZone = 'America/New_York';
+const format = 'MM/dd/yyyy HH:mm';
+
+// Example usage:
+console.log(formatDateInTimeZone(dateStr, fromZone, toZone, format)); //output: 10/14/2024 08:00
 ```

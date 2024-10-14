@@ -36,3 +36,16 @@ export const getTimeDifference = (timezone1: string, timezone2: string): number 
 
   return diffInHours;
 };
+
+/**
+ * Formats a date string for a given timezone in the specified format.
+ * @param {string} dateStr - The date string in ISO format.
+ * @param {string} fromZone - The source timezone.
+ * @param {string} toZone - The target timezone.
+ * @param {string} format - The format string for the output date.
+ * @returns {string} - The formatted date string in the target timezone.
+ */
+
+export const formatDateInTimeZone = (dateStr: string, fromZone: string, toZone: string, format: string): string => {
+  return DateTime.fromISO(dateStr, { zone: fromZone }).setZone(toZone).toFormat(format);
+};
