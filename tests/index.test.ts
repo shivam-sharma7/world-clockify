@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { convertTimeZone, getCurrentTimeInZone, getTimeDifference } from '../src/function.js';
+import { convertTimeZone, getCurrentTimeInZone, getTimeDifference } from '../src/function';
 
 describe('Timezone-Aware Date Helper', () => {
   it('should convert date between timezones', () => {

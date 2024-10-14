@@ -1,11 +1,17 @@
-<h1 align='center'>world-clockify</h1>
+<div align="center">
+
+<h1 style="color: #3498db;">World-Clockify</h1>
+<a href="https://github.com/shivam-sharma7/world-clockify/actions/workflows/ci.yml"><img alt="Node.js CI" src="https://github.com/shivam-sharma7/world-clockify/actions/workflows/ci.yml/badge.svg"></a>
+<a href="./LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/shivam-sharma7/world-clockify"></a>
+
+</div>
 
 ## Features
 
-- Convert date/time between different timezones.
-- Get the current time in any timezone.
-- Calculate the time difference (in hours) between two timezones.
-<!-- TODO:  Supports both JavaScript and TypeScript -->
+- Convert date/time between different timezones. (e.g. Asia/Kolkata).
+- Get the current time in any timezone. (e.g., Asia/Kolkata)
+- Calculate the time difference (in hours) between two timezones. (e.g., 'America/New_York', 'Europe/London');
+- Supports both JavaScript and TypeScript
 
 ## Installation
 
