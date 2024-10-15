@@ -1,0 +1,42 @@
+name: Deploy Docsify to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Trigger deployment on push to main branch
+  pull_request:
+    branches:
+      - main # Trigger deployment for PRs targeting the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x' # Adjust this to your Node version
+
+      - name: Install Docsify CLI
+        run: npm install -g docsify-cli
+
+      - name: Build Docsify site
+        run: |
+          npx docsify init ./docs
+          npx docsify-cli serve ./docs --port 3000
+        if: github.event_name == 'pull_request' # Serve for pull requests only
+
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' # Only deploy on push to main branch
+        run: |
+          cd docs
+          git init
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Deploy Docsify site"
+          git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:gh-pages
