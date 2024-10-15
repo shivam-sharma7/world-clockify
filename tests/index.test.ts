@@ -1,5 +1,11 @@
-import { describe, it, expect, should } from 'vitest';
-import { convertTimeZone, getCurrentTimeInZone, getTimeDifference, formatDateInTimeZone } from '../src/function.js';
+import { describe, it, expect } from 'vitest';
+import {
+  convertTimeZone,
+  getCurrentTimeInZone,
+  getTimeDifference,
+  formatDateInTimeZone,
+  calculateDuration,
+} from '../src/function.js';
 
 describe('Timezone-Aware Date Helper', () => {
   it('should convert date between timezones', () => {
@@ -39,5 +45,22 @@ describe('Timezone-Aware Date Helper', () => {
 
     const result = formatDateInTimeZone(dateStr, fromZone, toZone, format);
     expect(result).toBe('2024-10-14 21:00');
+  });
+
+  it('should calculates the duration between two dates across timezones ', () => {
+    const startDate = '2024-10-10';
+    const endDate = '2024-10-13';
+    const timezone = 'UTC';
+    const unitInDays = 'days';
+    const unitInHours = 'hours';
+    const unitInMinutes = 'minutes';
+
+    const durationInDays = calculateDuration(startDate, endDate, timezone, unitInDays);
+    const durationInHours = calculateDuration(startDate, endDate, timezone, unitInHours);
+    const durationInMinutes = calculateDuration(startDate, endDate, timezone, unitInMinutes);
+
+    expect(durationInDays).toBe(3); // 3 days difference
+    expect(durationInHours).toBe(72); // 3 days * 24 hours = 72 hours
+    expect(durationInMinutes).toBe(4320); // 72 hours * 60 minutes = 4320 minutes
   });
 });
