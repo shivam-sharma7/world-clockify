@@ -1,4 +1,4 @@
-import { DateTime, IANAZone } from 'luxon';
+import { DateTime, IANAZone, Duration } from 'luxon';
 
 /**
  * Converts a date from one timezone to another.
@@ -134,4 +134,41 @@ export const formatDateInTimeZone = (dateStr: string, fromZone: string, toZone: 
   console.log('Formatted DateTime:', formattedDate);
 
   return formattedDate;
+};
+
+/**
+ * Calculates the duration between two dates across timezones.
+ * @param {string} startDateStr - The start date in string format (ISO).
+ * @param {string} endDateStr - The end date in string format (ISO).
+ * @param {string} timezone - The timezone in which the calculation is made.
+ * @returns {object} - The duration between the dates in days, hours, and minutes.
+ */
+export const calculateDuration = (
+  startDateStr: string,
+  endDateStr: string,
+  timezone: string,
+  unit: 'days' | 'hours' | 'minutes',
+) => {
+  if (!IANAZone.isValidZone(timezone)) {
+    throw new Error(
+      `Invalid timezone: "${timezone}". Please provide a valid IANA timezone (e.g., 'America/New_York').`,
+    );
+  }
+
+  const startDate = DateTime.fromISO(startDateStr, { zone: timezone });
+  const endDate = DateTime.fromISO(endDateStr, { zone: timezone });
+
+  if (!startDate.isValid) {
+    throw new Error(`Invalid start date: "${startDateStr}". Ensure the date is in ISO format (e.g., 'YYYY-MM-DD').`);
+  }
+
+  if (!endDate.isValid) {
+    throw new Error(`Invalid end date: "${endDateStr}". Ensure the date is in ISO format (e.g., 'YYYY-MM-DD').`);
+  }
+
+  // Calculate difference in specified unit
+  const duration = endDate.diff(startDate, unit).as(unit);
+  console.log(`Difference between ${startDate.toString()} and ${endDate.toString()} in ${unit}:`, duration);
+
+  return duration;
 };

@@ -24,10 +24,8 @@ This is a lightweight and timezone-aware date utility package built on top of th
 You can install the package via npm or yarn.
 
 ```bash
-# npm
 npm install world-clockify
 
-# yarn
 yarn add world-clockify
 
 ```
@@ -51,20 +49,40 @@ console.log(currentTime); // Outputs the current time in ISO format
 const timeDifference = getTimeDifference('America/New_York', 'Europe/London');
 console.log(timeDifference); // Outputs: 5 (hours)
 
+// format date in a specific timezone
 const dateStr = '2024-10-14T12:00:00';
 const fromZone = 'UTC';
 const toZone = 'America/New_York';
 const format = 'MM/dd/yyyy HH:mm';
 
-// Example usage:
 console.log(formatDateInTimeZone(dateStr, fromZone, toZone, format)); //output: 10/14/2024 08:00
+
+// Calculates the duration between two dates across timezones
+const options = {
+  startDate: '2024-10-10',
+  endDate: '2024-10-13',
+  timezone: 'UTC',
+  unit: 'days',
+};
+
+// Calculate duration in days
+const durationInDays = calculateDuration(options);
+console.log(durationInDays); // Output: 3
+
+// Calculate duration in hours
+const durationInHours = calculateDuration({ ...options, unit: 'hours' });
+console.log(durationInHours); // Output: 72
+
+// Calculate duration in minutes
+const durationInMinutes = calculateDuration({ ...options, unit: 'minutes' });
+console.log(durationInMinutes); // Output: 4320
 ```
 
 ## Development
 
-See [Contributing](./CONTRIBUTING.md).
+See our [Contributing](./CONTRIBUTING.md).
 
 ## Support
 
-Give a ⭐️ if this project helped you!
-You can also sponsor me on [Github](https://github.com/sponsors/shivam-sharma7)
+- Give a ⭐️ if this project helped you!
+- You can also sponsor me on [Github](https://github.com/sponsors/shivam-sharma7)
