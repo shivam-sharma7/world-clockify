@@ -4,7 +4,7 @@ First, you need to download node.js 20+ [Download Node.js](https://nodejs.org/en
 
 Then You can install the package via npm or yarn.
 
-```bash
+```shell
 npm install world-clockify
 ```
 
