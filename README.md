@@ -19,68 +19,17 @@ This is a lightweight and timezone-aware date utility package built on top of th
 - Calculate the time difference (in hours) between two timezones.
 - Supports for both JavaScript and TypeScript developer.
 
-## Installation
+## Download/install
 
-You can install the package via npm or yarn.
+[Download/install instructions](https://shivam-sharma7.github.io/world-clockify/#/./guide/installation)
 
-```bash
-npm install world-clockify
+## Documentation
 
-yarn add world-clockify
-
-```
-
-## Usage
-
-After installation, you can use the library as follows:
-
-```javascript
-import { convertTimeZone, getCurrentTimeInZone, getTimeDifference, formatDateInTimeZone } from 'world-clockify';
-
-// Convert time between timezones
-const convertedTime = convertTimeZone('2024-01-01T12:00:00', 'America/New_York', 'Europe/London');
-console.log(convertedTime); // Outputs: '2024-01-01T17:00:00.000Z'
-
-// Get current time in a specific timezone
-const currentTime = getCurrentTimeInZone('America/New_York');
-console.log(currentTime); // Outputs the current time in ISO format
-
-// Calculate time difference between two timezones
-const timeDifference = getTimeDifference('America/New_York', 'Europe/London');
-console.log(timeDifference); // Outputs: 5 (hours)
-
-// format date in a specific timezone
-const dateStr = '2024-10-14T12:00:00';
-const fromZone = 'UTC';
-const toZone = 'America/New_York';
-const format = 'MM/dd/yyyy HH:mm';
-
-console.log(formatDateInTimeZone(dateStr, fromZone, toZone, format)); //output: 10/14/2024 08:00
-
-// Calculates the duration between two dates across timezones
-const options = {
-  startDate: '2024-10-10',
-  endDate: '2024-10-13',
-  timezone: 'UTC',
-  unit: 'days',
-};
-
-// Calculate duration in days
-const durationInDays = calculateDuration(options);
-console.log(durationInDays); // Output: 3
-
-// Calculate duration in hours
-const durationInHours = calculateDuration({ ...options, unit: 'hours' });
-console.log(durationInHours); // Output: 72
-
-// Calculate duration in minutes
-const durationInMinutes = calculateDuration({ ...options, unit: 'minutes' });
-console.log(durationInMinutes); // Output: 4320
-```
+- [General documentation](https://shivam-sharma7.github.io/world-clockify/#/)
 
 ## Development
 
-See our [Contributing](./CONTRIBUTING.md).
+See our [Contributing Guide](./CONTRIBUTING.md).
 
 ## Support
 
