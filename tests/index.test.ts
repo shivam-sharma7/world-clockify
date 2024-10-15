@@ -5,6 +5,7 @@ import {
   getTimeDifference,
   formatDateInTimeZone,
   calculateDuration,
+  getSupportedTimezones,
 } from '../src/function.js';
 
 describe('Timezone-Aware Date Helper', () => {
@@ -62,5 +63,10 @@ describe('Timezone-Aware Date Helper', () => {
     expect(durationInDays).toBe(3); // 3 days difference
     expect(durationInHours).toBe(72); // 3 days * 24 hours = 72 hours
     expect(durationInMinutes).toBe(4320); // 72 hours * 60 minutes = 4320 minutes
+  });
+
+  it('should returns a list of all supported IANA timezones', () => {
+    const timezones = getSupportedTimezones();
+    expect(timezones);
   });
 });
