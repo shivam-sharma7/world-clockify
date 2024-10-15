@@ -4,8 +4,11 @@ import { convertTimeZone, getCurrentTimeInZone, getTimeDifference, formatDateInT
 describe('Timezone-Aware Date Helper', () => {
   it('should convert date between timezones', () => {
     const dateStr = '2024-01-01T12:00:00';
-    const converted = convertTimeZone(dateStr, 'America/New_York', 'Europe/London');
-    expect(converted).toBe('2024-01-01T17:00:00.000+00:00'); // Adjusted expected value
+    const fromZone = 'America/New_York';
+    const toZone = 'Europe/London';
+
+    const converted = convertTimeZone(dateStr, fromZone, toZone);
+    expect(converted).toBe('2024-01-01T17:00:00.000+00:00');
   });
 
   it('should get current time in a specific timezone', () => {
