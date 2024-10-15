@@ -172,3 +172,14 @@ export const calculateDuration = (
 
   return duration;
 };
+
+/**
+ * Returns a list of all supported IANA timezones using the Javascript Intl API.
+ * @returns {string[]} - An array of supported timezone strings.
+ */
+export const getSupportedTimezones = (): string[] => {
+  const getListOfSupportedTimeZones = Intl.supportedValuesOf('timeZone');
+  console.log('Get all all supported IANA timezones', getListOfSupportedTimeZones);
+
+  return getListOfSupportedTimeZones;
+};
