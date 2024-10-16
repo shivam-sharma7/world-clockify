@@ -25,7 +25,7 @@ describe('Timezone-Aware Date Helper', () => {
 
   it('should calculate time difference between two timezones', () => {
     const diff = getTimeDifference('America/New_York', 'Europe/London');
-    expect(diff).toBe(5); // Assuming DST is not in effect.
+    expect(diff).toBe(5); // New York is 5 hours behind London
   });
 
   it('should format date correct for a different timezone', () => {

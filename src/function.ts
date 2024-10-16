@@ -10,9 +10,6 @@ import { DateTime, IANAZone, Duration } from 'luxon';
 export const convertTimeZone = (dateStr: string, fromZone: string, toZone: string): string => {
   const dateTime = DateTime.fromISO(dateStr, { zone: fromZone });
 
-  // Debug: Print the original date with timezone info
-  console.log('Original DateTime:', dateTime.toString());
-
   if (!IANAZone.isValidZone(fromZone)) {
     throw new Error(
       `Invalid source timezone: "${fromZone}". Please provide a valid IANA timezone (e.g., 'America/New_York').`,
@@ -34,9 +31,6 @@ export const convertTimeZone = (dateStr: string, fromZone: string, toZone: strin
 
   const converted = dateTime.setZone(toZone);
 
-  // Debug: Print the converted date with timezone info
-  console.log('Converted DateTime:', converted.toString());
-
   return converted.toISO()!;
 };
 
@@ -53,11 +47,9 @@ export const getCurrentTimeInZone = (timezone: string): string => {
   }
   // Get the current time in the specified timezone
   const currentTime = DateTime.now().setZone(timezone);
-  console.log('Current DateTime in Zone:', currentTime.toString());
 
   // Return the current time in ISO format
   const currentTimeISO = currentTime.toISO();
-  console.log('Current DateTime in ISO Format:', currentTimeISO);
 
   return currentTimeISO ?? '';
 };
@@ -85,10 +77,8 @@ export const getTimeDifference = (timezone1: string, timezone2: string): number 
   const zone1 = now.setZone(timezone1);
   const zone2 = now.setZone(timezone2);
 
-  // Calculate the difference in offsets
+  // Calculate the difference in offsets between the two timezones
   const diffInHours = (zone2.offset - zone1.offset) / 60;
-  //Debug: Print differences
-  console.log(`Difference in offsets between ${timezone1} and ${timezone2} in hours is:`, diffInHours);
 
   return diffInHours;
 };
@@ -116,7 +106,6 @@ export const formatDateInTimeZone = (dateStr: string, fromZone: string, toZone: 
   }
 
   const dateTime = DateTime.fromISO(dateStr, { zone: fromZone });
-  console.log('Original DateTime:', dateTime.toString());
 
   // Validate the date-time object
   if (!dateTime.isValid) {
@@ -127,11 +116,9 @@ export const formatDateInTimeZone = (dateStr: string, fromZone: string, toZone: 
 
   // Convert to target timezone
   const converted = dateTime.setZone(toZone);
-  console.log('Converted DateTime:', converted.toString());
 
-  // Format the converted date
+  // Format the converted date in the specified format
   const formattedDate = converted.toFormat(format);
-  console.log('Formatted DateTime:', formattedDate);
 
   return formattedDate;
 };
@@ -168,7 +155,6 @@ export const calculateDuration = (
 
   // Calculate difference in specified unit
   const duration = endDate.diff(startDate, unit).as(unit);
-  console.log(`Difference between ${startDate.toString()} and ${endDate.toString()} in ${unit}:`, duration);
 
   return duration;
 };
@@ -179,7 +165,6 @@ export const calculateDuration = (
  */
 export const getSupportedTimezones = (): string[] => {
   const getListOfSupportedTimeZones = Intl.supportedValuesOf('timeZone');
-  console.log('Get all all supported IANA timezones', getListOfSupportedTimeZones);
 
   return getListOfSupportedTimeZones;
 };
