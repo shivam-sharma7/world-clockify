@@ -168,3 +168,37 @@ export const getSupportedTimezones = (): string[] => {
 
   return getListOfSupportedTimeZones;
 };
+
+/**
+ * Get the countdown to a specific event in a given timezone.
+ *
+ * @param eventDate - The date of the event (ISO string format).
+ * @param eventTimezone - The timezone of the event.
+ * @returns - The countdown as an object (days, hours, minutes, seconds).
+ */
+
+export const getCountdownToEvent = (
+  eventDate: string,
+  eventTimezone: string,
+): { days: number; hours: number; minutes: number; seconds: number } => {
+  if (!IANAZone.isValidZone(eventTimezone)) {
+    throw new Error(
+      `Invalid timezone: "${eventTimezone}". Please provide a valid IANA timezone (e.g., 'America/New_York').`,
+    );
+  }
+
+  if (!DateTime.fromISO(eventDate).isValid) {
+    throw new Error(`Invalid date: "${eventDate}". Ensure the date is in ISO format (e.g., 'YYYY-MM-DDTHH:mm:ss').`);
+  }
+  const now = DateTime.now().setZone(eventTimezone);
+  const eventTime = DateTime.fromISO(eventDate, { zone: eventTimezone });
+
+  const diff = eventTime.diff(now, ['days', 'hours', 'minutes', 'seconds']).toObject();
+
+  return {
+    days: Math.floor(diff.days || 0),
+    hours: Math.floor(diff.hours || 0),
+    minutes: Math.floor(diff.minutes || 0),
+    seconds: Math.floor(diff.seconds || 0),
+  };
+};
