@@ -6,6 +6,7 @@ import {
   formatDateInTimeZone,
   calculateDuration,
   getSupportedTimezones,
+  getCountdownToEvent,
 } from '../src/function.js';
 
 describe('Timezone-Aware Date Helper', () => {
@@ -67,6 +68,17 @@ describe('Timezone-Aware Date Helper', () => {
 
   it('should returns a list of all supported IANA timezones', () => {
     const timezones = getSupportedTimezones();
-    expect(timezones);
+    expect(timezones).toBeInstanceOf(Array);
+  });
+
+  it('should calculate the countdown to a specific event', () => {
+    const eventDate = '2024-10-20T15:00:00';
+    const eventTimezone = 'America/New_York';
+    const countdown = getCountdownToEvent(eventDate, eventTimezone);
+
+    expect(countdown).toHaveProperty('days');
+    expect(countdown).toHaveProperty('hours');
+    expect(countdown).toHaveProperty('minutes');
+    expect(countdown).toHaveProperty('seconds');
   });
 });
