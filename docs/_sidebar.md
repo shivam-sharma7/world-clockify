@@ -6,7 +6,7 @@
 
 </details>
 
-<details  open style="margin-left: 20px">
+<details  open  style="margin-left: 20px">
 <summary>How to Use</summary>
 
 - [Get Current Time in Zone](./guide/getCurrentTimeInZone.md)
@@ -15,5 +15,18 @@
 - [Time Zone Offset Difference](./guide/getTimeZoneOffsetDifference.md)
 - [Format Date in Time Zone](./guide/formatDateInTimeZone.md)
 - [Calculate Duration](./guide/calculateDuration.md)
+
+</details>
+
+<details open style="margin-left: 20px">
+<summary>API Integration</summary>
+
+- [API Overview](./api/Introduction.md)
+- [Fetch Current Time API](./api/fetchCurrentTime.md)
+- [Fetch Supported Timezones API](./api/fetchSupportedTimezones.md)
+- [Fetch Converted Time API](./api/fetchConvertedTime.md)
+- [Fetch Time Difference API](./api/fetchTimeDifference.md)
+- [Calculate Duration API](./api/calculateDurationAPI.md)
+- [Format Date in Timezone API](./api/formatDateInTimezoneAPI.md)
 
 </details>
