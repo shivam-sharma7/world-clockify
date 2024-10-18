@@ -6,6 +6,8 @@ import {
   formatDateInTimeZone,
   calculateDuration,
   getSupportedTimezones,
+  getSupportedCrrency,
+  getSupportedCalendar,
   getCountdownToEvent,
 } from '../src/function.js';
 
@@ -69,6 +71,16 @@ describe('Timezone-Aware Date Helper', () => {
   it('should returns a list of all supported IANA timezones', () => {
     const timezones = getSupportedTimezones();
     expect(timezones).toBeInstanceOf(Array);
+  });
+
+  it('should returns a list of all supported currency', () => {
+    const currencies = getSupportedCrrency();
+    expect(currencies).toBeInstanceOf(Array);
+  });
+
+  it('should returns a list of all supported calendar', () => {
+    const calenders = getSupportedCalendar();
+    expect(calenders).toBeInstanceOf(Array);
   });
 
   it('should calculate the countdown to a specific event', () => {

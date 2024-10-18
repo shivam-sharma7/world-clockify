@@ -12,6 +12,8 @@
 - [Get Current Time in Zone](./guide/getCurrentTimeInZone.md)
 - [Get list of Time Zones](./guide/getListOfSupportedTimeZones.md)
 - [Get Count Down To Event](./guide//getCountdownToEvent.md)
+- [Get list of calendar](./guide/getSupportedCalendar.md)
+- [Get list of Currency](./guide/getSupportedCrrency.md)
 - [Convert Time Zone](./guide/convertTimeZone.md)
 - [Time Zone Offset Difference](./guide/getTimeZoneOffsetDifference.md)
 - [Format Date in Time Zone](./guide/formatDateInTimeZone.md)
