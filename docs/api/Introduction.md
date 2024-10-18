@@ -2,7 +2,7 @@ Let’s explore why a user might prefer to use the API endpoints instead of inst
 
 ## Note
 
-Our base URl for the API is `https://world-clockify.com/api/v1/` and all the endpoints are relative to this base URL.
+Our base URl for the API is `https://world-clockify-api.onrender.com/api/v1` and all the endpoints are relative to this base URL.
 
 ## 1. Serverless/Lightweight Client Applications
 
