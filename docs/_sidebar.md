@@ -26,11 +26,15 @@
 <summary>API Integration</summary>
 
 - [API Overview](./api/Introduction.md)
-- [Fetch Current Time API](./api/fetchCurrentTime.md)
-- [Fetch Supported Timezones API](./api/fetchSupportedTimezones.md)
-- [Fetch Converted Time API](./api/fetchConvertedTime.md)
+- [Fetch Current Time](./api/fetchCurrentTime.md)
+- [Fetch Supported Timezones](./api/fetchSupportedTimezones.md)
+- [Fetch Supported Calendars](./api/fetchSupportedCalendars.md)
+- [Fetch Supported Currencies](./api/fetchSupportedCurrencies.md)
+- [Fetch Converted Time](./api/fetchConvertedTime.md)
 - [Fetch Time Difference API](./api/fetchTimeDifference.md)
 - [Calculate Duration API](./api/calculateDurationAPI.md)
-- [Format Date in Timezone API](./api/formatDateInTimezoneAPI.md)
+- [Format Date in Timezone](./api/formatDateInTimezoneAPI.md)
+- [Format Date for locale](./api/formatDateInLocale.md)
+- [Fetch Count Down To Event](./api/getCountdownToEvent.md)
 
 </details>
