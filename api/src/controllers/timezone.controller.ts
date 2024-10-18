@@ -6,6 +6,10 @@ import {
   convertTimeZone,
   calculateDuration,
   formatDateInTimeZone,
+  getSupportedCrrency,
+  getSupportedCalendar,
+  formatDateForLocale,
+  getCountdownToEvent,
 } from 'world-clockify';
 
 export const fetchCurrentTimeInZone = async (req: Request, res: Response) => {
@@ -30,6 +34,26 @@ export const fetchSupportedTimezones = async (_req: Request, res: Response) => {
     res.status(200).json({ timezones });
   } catch (error) {
     console.error('Error fetching supported timezones:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const fetchSupportedCrrency = async (req: Request, res: Response) => {
+  try {
+    const crrencies = getSupportedCrrency();
+    res.status(200).json({ crrencies });
+  } catch (error) {
+    console.error('Error fetching supported currencies:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const fetchSupportedCalendar = async (req: Request, res: Response) => {
+  try {
+    const calendar = getSupportedCalendar();
+    res.status(200).json({ calendar });
+  } catch (error) {
+    console.error('Error fetching supported calendar:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
@@ -96,12 +120,44 @@ export const formatDateInTimezone = (req: Request, res: Response) => {
       typeof format === 'string'
     ) {
       const formattedDate = formatDateInTimeZone(date, fromZone, toZone, format);
-      res.json({ formattedDate });
+      res.status(200).json({ formattedDate });
     } else {
       res.status(400).json({ message: 'Invalid parameters' });
     }
   } catch (error) {
     console.error('Error formatting date:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const formatDateLocale = async (req: Request, res: Response) => {
+  const { dateStr, locale, timezone } = req.query;
+
+  try {
+    if (typeof dateStr === 'string' && typeof locale === 'string' && typeof timezone === 'string') {
+      const formatDateLocale = formatDateForLocale(dateStr, locale, timezone);
+      res.status(200).json({ formatDateLocale });
+    } else {
+      res.status(400).json({ message: 'Invalid parameters' });
+    }
+  } catch (error) {
+    console.error('Error formatting date for local:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const countDownToEvent = async (req: Request, res: Response) => {
+  const { eventDate, eventTimezone } = req.query;
+
+  try {
+    if (typeof eventDate === 'string' && typeof eventTimezone === 'string') {
+      const countdown = getCountdownToEvent(eventDate, eventTimezone);
+      res.status(200).json({ countdown });
+    } else {
+      res.status(400).json({ message: 'Invalid parameters' });
+    }
+  } catch (error) {
+    console.error('Error getting countdown to event:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
