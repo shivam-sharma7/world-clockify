@@ -170,6 +170,26 @@ export const getSupportedTimezones = (): string[] => {
 };
 
 /**
+ * Returns a list of all supported currency using the Javascript Intl API.
+ * @returns {string[]} - An array of supported currency strings.
+ */
+export const getSupportedCrrency = (): string[] => {
+  const getListOfSupportedCurrency = Intl.supportedValuesOf('currency');
+
+  return getListOfSupportedCurrency;
+};
+
+/**
+ * Returns a list of all supported calendar using the Javascript Intl API.
+ * @returns {string[]} - An array of supported calendar strings.
+ */
+export const getSupportedCalendar = (): string[] => {
+  const getListOfSupportedCalendar = Intl.supportedValuesOf('calendar');
+
+  return getListOfSupportedCalendar;
+};
+
+/**
  * Get the countdown to a specific event in a given timezone.
  *
  * @param eventDate - The date of the event (ISO string format).
