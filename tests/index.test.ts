@@ -4,6 +4,7 @@ import {
   getCurrentTimeInZone,
   getTimeDifference,
   formatDateInTimeZone,
+  formatDateForLocale,
   calculateDuration,
   getSupportedTimezones,
   getSupportedCrrency,
@@ -39,6 +40,15 @@ describe('Timezone-Aware Date Helper', () => {
 
     const result = formatDateInTimeZone(dateStr, fromZone, toZone, format);
     expect(result).toBe('10/14/2024 08:00');
+  });
+
+  it('should format date string based on the given locale and timezone.', () => {
+    const dateStr = '2024-10-17T10:30:00';
+    const local = 'en-US';
+    const timeZone = 'America/New_York';
+
+    const result = formatDateForLocale(dateStr, local, timeZone);
+    expect(result).toBe('October 17, 2024 at 10:30 AM EDT');
   });
 
   it('should handle other timezones and format correctly', () => {

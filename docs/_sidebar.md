@@ -17,6 +17,7 @@
 - [Convert Time Zone](./guide/convertTimeZone.md)
 - [Time Zone Offset Difference](./guide/getTimeZoneOffsetDifference.md)
 - [Format Date in Time Zone](./guide/formatDateInTimeZone.md)
+- [Format Date Based On Local](./guide/formatDateForLocale.md)
 - [Calculate Duration](./guide/calculateDuration.md)
 
 </details>

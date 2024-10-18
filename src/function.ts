@@ -124,6 +124,35 @@ export const formatDateInTimeZone = (dateStr: string, fromZone: string, toZone: 
 };
 
 /**
+ * Formats a date string based on the given locale and timezone.
+ *
+ * @param {string} dateStr - The date string in ISO format.
+ * @param {string} locale - The locale to format the date (e.g., 'fr', 'en-US').
+ * @param {string} timezone - The timezone for the date.
+ * @returns - The formatted date string.
+ */
+
+export const formatDateForLocale = (dateStr: string, locale: string, timezone: string): string => {
+  /* Create a DateTime object from the date string and timezone provided as arguments to the function.
+   The date string is expected to be in ISO format (e.g., '2022-01-01T12:00:00'). */
+  const date = DateTime.fromISO(dateStr, { zone: timezone });
+
+  if (!date.isValid) {
+    throw new Error(
+      `Invalid date string: "${dateStr}". Ensure the date is in ISO format (e.g., 'YYYY-MM-DDTHH:mm:ss').`,
+    );
+  }
+
+  if (!IANAZone.isValidZone(timezone)) {
+    throw new Error(
+      `Invalid timezone: "${timezone}". Please provide a valid IANA timezone (e.g., 'America/New_York').`,
+    );
+  }
+
+  return date.setLocale(locale).toLocaleString(DateTime.DATETIME_FULL);
+};
+
+/**
  * Calculates the duration between two dates across timezones.
  * @param {string} startDateStr - The start date in string format (ISO).
  * @param {string} endDateStr - The end date in string format (ISO).
