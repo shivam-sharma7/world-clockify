@@ -1,6 +1,6 @@
 {
   "name": "world-clockify",
-  "version": "1.3.3",
+  "version": "1.4.3",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -16,13 +16,15 @@
     "docs",
     "src",
     "LICENSE",
-    "REDME.md"
+    "REDME.md",
+    "package.json"
   ],
   "keywords": [
     "world",
     "clockify",
     "time",
     "zone",
+    "currency",
     "converter"
   ],
   "homepage": "https://shivam-sharma7.github.io/world-clockify/#/",
