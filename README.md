@@ -19,6 +19,8 @@ This is a lightweight and timezone-aware date utility package built on top of th
 - Calculate the time difference (in hours) between two timezones.
 - Supports for both JavaScript and TypeScript developer.
 
+There are many more features available in the package.
+
 ## Download/install
 
 [Download/install instructions](https://shivam-sharma7.github.io/world-clockify/#/./guide/installation)
@@ -26,6 +28,7 @@ This is a lightweight and timezone-aware date utility package built on top of th
 ## Documentation
 
 - [General documentation](https://shivam-sharma7.github.io/world-clockify/#/)
+- [API documentation](https://shivam-sharma7.github.io/world-clockify/#/./api/Introduction)
 
 ## Development
 
