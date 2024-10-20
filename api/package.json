@@ -15,6 +15,7 @@
   "license": "MIT",
   "description": "This is api project for world clockify",
   "dependencies": {
+    "cron": "^3.1.7",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "express-rate-limit": "^7.4.1",

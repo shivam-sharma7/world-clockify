@@ -2,8 +2,11 @@ import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 
 import timezoneRoutes from './routes/timezone.routes';
+import { job } from './cron';
 
 dotenv.config();
+
+job.start();
 
 const PORT = process.env.PORT || 5000;
 
