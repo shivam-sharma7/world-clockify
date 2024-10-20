@@ -11,18 +11,19 @@ import {
   fetchSupportedCalendar,
   countDownToEvent,
 } from '../controllers/timezone.controller';
+import { limiter } from '../middleware/ratelimit';
 
 const router = express.Router();
 
 router.get('/currenttime', fetchCurrentTimeInZone);
-router.get('/supportedtimezone', fetchSupportedTimezones);
+router.get('/supportedtimezone', limiter, fetchSupportedTimezones);
 router.get('/currency', fetchSupportedCrrency);
 router.get('/calendar', fetchSupportedCalendar);
-router.get('/converttimezone', fetchConvertedTime);
+router.get('/converttimezone', limiter, fetchConvertedTime);
 router.get('/timedifference', fetchTimeDifference);
-router.get('/calculateduration', calculateDurationBetweenDates);
-router.get('/formattimezone', formatDateInTimezone);
-router.get('/formatdatelocale', formatDateLocale);
-router.get('/countdownevent', countDownToEvent);
+router.get('/calculateduration', limiter, calculateDurationBetweenDates);
+router.get('/formattimezone', limiter, formatDateInTimezone);
+router.get('/formatdatelocale', limiter, formatDateLocale);
+router.get('/countdownevent', limiter, countDownToEvent);
 
 export default router;
