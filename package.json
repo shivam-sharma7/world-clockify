@@ -1,9 +1,6 @@
 {
   "name": "world-clockify",
   "version": "1.4.4",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
@@ -27,6 +24,14 @@
     "currency",
     "converter"
   ],
+  "main": "dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "homepage": "https://shivam-sharma7.github.io/world-clockify/#/",
   "repository": {
     "type": "git",
