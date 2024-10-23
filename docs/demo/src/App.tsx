@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { formatDateInTimeZone, getSupportedTimezones } from 'world-clockify';
-import './App.css'
+import './App.css';
 
 const App: React.FC = () => {
   const [currentDate] = useState(new Date().toISOString());
@@ -18,21 +18,25 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <h1>World Clockify React Integration</h1>
-      
+
       <div>
-        <label className='lbl'>From Timezone:</label>
+        <label className="lbl">From Timezone:</label>
         <select value={fromZone} onChange={(e) => setFromZone(e.target.value)}>
           {getSupportedTimezones().map((zone) => (
-            <option key={zone} value={zone}>{zone}</option>
+            <option key={zone} value={zone}>
+              {zone}
+            </option>
           ))}
         </select>
       </div>
 
       <div>
-        <label className='lbl'>To Timezone:</label>
+        <label className="lbl">To Timezone:</label>
         <select value={toZone} onChange={(e) => setToZone(e.target.value)}>
           {getSupportedTimezones().map((zone) => (
-            <option key={zone} value={zone}>{zone}</option>
+            <option key={zone} value={zone}>
+              {zone}
+            </option>
           ))}
         </select>
       </div>
@@ -45,8 +49,7 @@ const App: React.FC = () => {
           <p>{formattedDate}</p>
         </div>
       )}
-      </div>
-  
+    </div>
   );
 };
 

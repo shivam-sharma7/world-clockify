@@ -3,6 +3,7 @@
 You can take reference from the following code to integrate the library in your project.
 
 `src/App.tsx`
+
 ```jsx
 import React, { useState } from 'react';
 import { formatDateInTimeZone, getSupportedTimezones } from 'world-clockify';
@@ -24,7 +25,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <h1>World Clockify React Integration</h1>
-      
+
       <div>
         <label className='lbl'>From Timezone:</label>
         <select value={fromZone} onChange={(e) => setFromZone(e.target.value)}>
@@ -52,14 +53,16 @@ const App: React.FC = () => {
         </div>
       )}
       </div>
-  
+
   );
 };
 
 export default App;
 ```
+
 Css file for the above code
 `src/App.css`
+
 ```css
 * {
   margin: 0;
@@ -67,7 +70,8 @@ Css file for the above code
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -131,11 +135,10 @@ p {
   font-size: 18px;
   color: #777;
 }
-
-
 ```
 
 ## View
+
 <div align="center">
 <img src="../demo/src/assets/demo.png" alt="expensify">
 </div>
