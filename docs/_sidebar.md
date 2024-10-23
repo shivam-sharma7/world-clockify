@@ -38,3 +38,10 @@
 - [Fetch Count Down To Event](./api/getCountdownToEvent.md)
 
 </details>
+
+<details open style="margin-left: 20px">
+<summary>Example App</summary>
+
+- [Create React App](./guide/example.md)
+
+</details>
