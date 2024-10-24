@@ -1,4 +1,4 @@
-import { DateTime, IANAZone, Duration } from 'luxon';
+import { DateTime, IANAZone } from 'luxon';
 
 /**
  * Converts a date from one timezone to another.
@@ -249,5 +249,50 @@ export const getCountdownToEvent = (
     hours: Math.floor(diff.hours || 0),
     minutes: Math.floor(diff.minutes || 0),
     seconds: Math.floor(diff.seconds || 0),
+  };
+};
+
+interface UserPreferences {
+  workStartTime: string; // Start time of the workday in 'HH:mm' format
+  workEndTime: string; // End time of the workday in 'HH:mm' format
+  preferredTimeZone: string; // IANA time zone string (e.g., 'America/New_York')
+  workSessionDuration: number; // Work session duration in minutes
+  breakDuration: number; // Break duration in minutes
+}
+
+/**
+ * Schedules work sessions and breaks for a user, promoting mental well-being.
+ *
+ * @param preference - User preferences for work and break scheduling.
+ * @returns - An object containing scheduled work sessions, breaks, and reminders.
+ */
+export const sheduleWorkAndBreaks = (preference: UserPreferences) => {
+  const { workStartTime, workEndTime, preferredTimeZone, workSessionDuration, breakDuration } = preference;
+
+  const workSession = [];
+  const breakTime = [];
+
+  let currentTime = DateTime.fromFormat(workStartTime, 'HH:mm', { zone: preferredTimeZone });
+  const endOfWorkDay = DateTime.fromFormat(workEndTime, 'HH:mm', { zone: preferredTimeZone });
+
+  // Loop to schedule work sessions and breaks
+  while (currentTime < endOfWorkDay) {
+    const workSessionEnd = currentTime.plus({ minute: workSessionDuration });
+    const breakTimeEnd = workSessionEnd.plus({ minute: breakDuration });
+
+    // Add break time session to the shedule
+    workSession.push({ start: currentTime.toFormat('hh:mm a'), end: workSessionEnd.toFormat('hh:mm a') });
+
+    // Add break time to the shedule
+    breakTime.push({ start: workSessionEnd.toFormat('hh:mm a'), end: breakTimeEnd.toFormat('hh:mm a') });
+
+    currentTime = breakTimeEnd;
+  }
+
+  return {
+    workSession,
+    breakTime,
+    reminders: ['Take a break!', 'Time for meditation or relaxation!'],
+    endOfDayReminder: `Your workday ends at ${workEndTime}. Time to relax!`,
   };
 };
