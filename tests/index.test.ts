@@ -10,6 +10,7 @@ import {
   getSupportedCrrency,
   getSupportedCalendar,
   getCountdownToEvent,
+  sheduleWorkAndBreaks,
 } from '../src/function.js';
 
 describe('Timezone-Aware Date Helper', () => {
@@ -102,5 +103,31 @@ describe('Timezone-Aware Date Helper', () => {
     expect(countdown).toHaveProperty('hours');
     expect(countdown).toHaveProperty('minutes');
     expect(countdown).toHaveProperty('seconds');
+  });
+  it('should  work sessions and breaks for a user', () => {
+    const preferences = {
+      workStartTime: '09:00',
+      workEndTime: '17:00',
+      preferredTimeZone: 'America/New_York',
+      workSessionDuration: 50,
+      breakDuration: 10,
+    };
+
+    const dailySchedule = sheduleWorkAndBreaks(preferences);
+
+    expect(dailySchedule.workSession.length).toBeGreaterThan(0);
+    expect(dailySchedule.breakTime.length).toBeGreaterThan(0);
+
+    expect(dailySchedule.workSession[0]).toEqual({
+      start: '09:00 AM',
+      end: '09:50 AM',
+    });
+
+    expect(dailySchedule.breakTime[0]).toEqual({
+      start: '09:50 AM',
+      end: '10:00 AM',
+    });
+
+    expect(dailySchedule.endOfDayReminder).toBe('Your workday ends at 17:00. Time to relax!');
   });
 });

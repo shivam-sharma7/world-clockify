@@ -19,6 +19,7 @@
 - [Format Date in Time Zone](./guide/formatDateInTimeZone.md)
 - [Format Date Based On Local](./guide/formatDateForLocale.md)
 - [Calculate Duration](./guide/calculateDuration.md)
+- [Mental Health Management](./guide/mentalHealth.md)
 
 </details>
 
