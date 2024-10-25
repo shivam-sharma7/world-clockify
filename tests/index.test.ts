@@ -11,6 +11,7 @@ import {
   getSupportedCalendar,
   getCountdownToEvent,
   sheduleWorkAndBreaks,
+  focusTimeManager,
 } from '../src/function.js';
 
 describe('Timezone-Aware Date Helper', () => {
@@ -129,5 +130,24 @@ describe('Timezone-Aware Date Helper', () => {
     });
 
     expect(dailySchedule.endOfDayReminder).toBe('Your workday ends at 17:00. Time to relax!');
+  });
+
+  it('should assists users in managing focused work sessions throughout their day', () => {
+    const preference = {
+      workStartTime: '09:00',
+      workEndTime: '17:00',
+      preferredTimeZone: 'America/New_York',
+      focusDuration: 50,
+      shortBreakDuration: 10,
+    };
+
+    const schedule = focusTimeManager(preference);
+
+    expect(schedule.focusSession.length).toBeGreaterThan(0);
+
+    expect(schedule.focusSession[0]).toEqual({
+      start: '09:00 AM',
+      end: '09:50 AM',
+    });
   });
 });
