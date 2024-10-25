@@ -320,6 +320,12 @@ export const focusTimeManager = (preference: focusUserPreferences) => {
 
   const focusSession = [];
 
+  if (!IANAZone.isValidZone(preferredTimeZone)) {
+    throw Error(
+      `Invalid timezone: "${preferredTimeZone}". Please provide a valid IANA timezone (e.g., 'America/New_York').`,
+    );
+  }
+
   let currentTime = DateTime.fromFormat(workStartTime, 'HH:mm', { zone: preferredTimeZone });
   const endOfDay = DateTime.fromFormat(workEndTime, 'HH:mm', { zone: preferredTimeZone });
 
