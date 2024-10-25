@@ -18,8 +18,9 @@ This is a lightweight and timezone-aware date utility package built on top of th
 - Get the current time in any timezone. (e.g., Asia/Kolkata)
 - Calculate the time difference (in hours) between two timezones.
 - Supports for both JavaScript and TypeScript developer.
+- Mental Health Time Manager, allowing users to set their work preferences.
 
-There are many more features available in the package.
+There are many more features available in the package. [Jump to docs](#documentation).
 
 ## Download/install
 

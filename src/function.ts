@@ -271,6 +271,11 @@ export const sheduleWorkAndBreaks = (preference: UserPreferences) => {
 
   const workSession = [];
   const breakTime = [];
+  if (!IANAZone.isValidZone(preferredTimeZone)) {
+    throw Error(
+      `Invalid timezone: "${preferredTimeZone}". Please provide a valid IANA timezone (e.g., 'America/New_York').`,
+    );
+  }
 
   let currentTime = DateTime.fromFormat(workStartTime, 'HH:mm', { zone: preferredTimeZone });
   const endOfWorkDay = DateTime.fromFormat(workEndTime, 'HH:mm', { zone: preferredTimeZone });
