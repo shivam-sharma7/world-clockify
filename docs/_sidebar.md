@@ -20,6 +20,7 @@
 - [Format Date Based On Local](./guide/formatDateForLocale.md)
 - [Calculate Duration](./guide/calculateDuration.md)
 - [Mental Health Management](./guide/mentalHealth.md)
+- [Focus Time Management](./guide/focusTimeManagement.md)
 
 </details>
 

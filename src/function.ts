@@ -301,3 +301,45 @@ export const sheduleWorkAndBreaks = (preference: UserPreferences) => {
     endOfDayReminder: `Your workday ends at ${workEndTime}. Time to relax!`,
   };
 };
+
+interface focusUserPreferences {
+  workStartTime: string; // Start time of the workday in 'HH:mm' format
+  workEndTime: string; // End time of the workday in 'HH:mm' format
+  preferredTimeZone: string; // IANA time zone string (e.g., 'America/New_York')
+  focusDuration: number; // Focus session duration in minutes
+  shortBreakDuration: number; // Break duration in minutes
+}
+
+/**
+ * feature designed to schedule blocks of uninterrupted focus time throughout the day.
+ * @param preference- User preference for daily work hours
+ * @returns- An object containing focusSession and reminders.
+ */
+export const focusTimeManager = (preference: focusUserPreferences) => {
+  const { workStartTime, workEndTime, preferredTimeZone, focusDuration, shortBreakDuration } = preference;
+
+  const focusSession = [];
+
+  if (!IANAZone.isValidZone(preferredTimeZone)) {
+    throw Error(
+      `Invalid timezone: "${preferredTimeZone}". Please provide a valid IANA timezone (e.g., 'America/New_York').`,
+    );
+  }
+
+  let currentTime = DateTime.fromFormat(workStartTime, 'HH:mm', { zone: preferredTimeZone });
+  const endOfDay = DateTime.fromFormat(workEndTime, 'HH:mm', { zone: preferredTimeZone });
+
+  while (currentTime < endOfDay) {
+    const focusEnd = currentTime.plus({ minutes: focusDuration });
+    const breakEnd = focusEnd.plus({ minutes: shortBreakDuration });
+
+    focusSession.push({ start: currentTime.toFormat('hh:mm a'), end: focusEnd.toFormat('hh:mm a') });
+
+    currentTime = breakEnd;
+  }
+
+  return {
+    focusSession,
+    reminders: ['Time to focus!', 'Take a short break!', 'Focus time starts again soon!'],
+  };
+};
