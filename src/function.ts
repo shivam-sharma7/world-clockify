@@ -272,7 +272,7 @@ export const sheduleWorkAndBreaks = (preference: UserPreferences) => {
   const workSession = [];
   const breakTime = [];
   if (!IANAZone.isValidZone(preferredTimeZone)) {
-    throw Error(
+    throw new Error(
       `Invalid timezone: "${preferredTimeZone}". Please provide a valid IANA timezone (e.g., 'America/New_York').`,
     );
   }
@@ -342,4 +342,38 @@ export const focusTimeManager = (preference: focusUserPreferences) => {
     focusSession,
     reminders: ['Time to focus!', 'Take a short break!', 'Focus time starts again soon!'],
   };
+};
+
+interface waterUserPreference {
+  wakeUpTime: string;
+  sleepTime: string;
+  preferredTimeZone: string;
+  intakeInterval: number;
+}
+
+/**
+ * daily reminder for hydration that tracks when the user should drink water based on intervals
+ * @param preference- User preference
+ */
+export const waterIntakeReminder = (preference: waterUserPreference) => {
+  const { wakeUpTime, sleepTime, preferredTimeZone, intakeInterval } = preference;
+
+  const reminders = [];
+
+  if (!IANAZone.isValidZone(preferredTimeZone)) {
+    throw new Error(
+      `Invalid timezone: "${preferredTimeZone}". Please provide a valid IANA timezone (e.g., 'America/New_York').`,
+    );
+  }
+
+  let currentTime = DateTime.fromFormat(wakeUpTime, 'HH:mm', { zone: preferredTimeZone });
+  const sleepDateTime = DateTime.fromFormat(sleepTime, 'HH:mm', { zone: preferredTimeZone });
+
+  while (currentTime < sleepDateTime) {
+    const nextReminder = currentTime.plus({ minutes: intakeInterval });
+    reminders.push(`Drink water at ${nextReminder.toFormat('hh:mm a')}`);
+    currentTime = nextReminder;
+  }
+
+  return reminders;
 };

@@ -12,6 +12,7 @@ import {
   getCountdownToEvent,
   sheduleWorkAndBreaks,
   focusTimeManager,
+  waterIntakeReminder,
 } from '../src/function.js';
 
 describe('Timezone-Aware Date Helper', () => {
@@ -149,5 +150,26 @@ describe('Timezone-Aware Date Helper', () => {
       start: '09:00 AM',
       end: '09:50 AM',
     });
+  });
+
+  it('should remind to drink water', () => {
+    const preference = {
+      wakeUpTime: '08:00',
+      sleepTime: '12:00',
+      preferredTimeZone: 'America/New_York',
+      intakeInterval: 60,
+    };
+
+    const waterIntake = waterIntakeReminder(preference);
+
+    // Expected reminders at hourly intervals from 8:00 AM to 12:00 PM
+    const expectedReminders = [
+      'Drink water at 09:00 AM',
+      'Drink water at 10:00 AM',
+      'Drink water at 11:00 AM',
+      'Drink water at 12:00 PM',
+    ];
+
+    expect(waterIntake).toEqual(expectedReminders);
   });
 });

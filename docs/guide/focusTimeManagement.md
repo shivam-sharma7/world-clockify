@@ -42,7 +42,7 @@ console.log(schedule);
 
 ## Parameters
 
-- focusUserPreferences(object): The date string in ISO format.
+- focusUserPreferences(object): User inputs.
 
 ## Returns
 

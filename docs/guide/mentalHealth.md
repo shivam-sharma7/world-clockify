@@ -49,8 +49,4 @@ console.log(dailySchedule);
 
 ## Parameters
 
-- userPreferences(object): The date string in ISO format.
-
-## Returns
-
-- (object): As a result.
+- userPreferences(object): User inputs
