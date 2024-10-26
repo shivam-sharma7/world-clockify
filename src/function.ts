@@ -377,3 +377,24 @@ export const waterIntakeReminder = (preference: waterUserPreference) => {
 
   return reminders;
 };
+
+/**
+ * sleep schedule based on their desired wake-up time and how many hours of sleep they need.
+ * @param {string} wakeUpTime
+ * @param {number} sleepCycles
+ * @param {string} preferredTimeZone
+ */
+
+export const sleepTimeAdvisor = (wakeUpTime: string, sleepCycles: number, preferredTimeZone: string) => {
+  const cycleDuration = 90; // in minutes
+  const totalSleepTime = cycleDuration * sleepCycles;
+
+  const wakeUp = DateTime.fromFormat(wakeUpTime, 'HH:mm', { zone: preferredTimeZone });
+
+  const suggestedSleepTime = wakeUp.minus({ minutes: totalSleepTime });
+
+  return {
+    suggestedSleepTime: suggestedSleepTime.toFormat('hh:mm a'),
+    message: `To get ${sleepCycles} cycles of sleep, you should go to bed by ${suggestedSleepTime.toFormat('hh:mm a')}.`,
+  };
+};

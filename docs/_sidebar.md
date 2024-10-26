@@ -22,6 +22,7 @@
 - [Mental Health Management](./guide/mentalHealth.md)
 - [Focus Time Management](./guide/focusTimeManagement.md)
 - [Water Intake Reminder](./guide/waterIntakeReminder.md)
+- [Sleep Time Advisor](./guide/sleepTimeAdvisor.md)
 
 </details>
 
