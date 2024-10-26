@@ -13,6 +13,7 @@ import {
   sheduleWorkAndBreaks,
   focusTimeManager,
   waterIntakeReminder,
+  sleepTimeAdvisor,
 } from '../src/function.js';
 
 describe('Timezone-Aware Date Helper', () => {
@@ -171,5 +172,15 @@ describe('Timezone-Aware Date Helper', () => {
     ];
 
     expect(waterIntake).toEqual(expectedReminders);
+  });
+
+  it('should suggest sleep time', () => {
+    const wakeUpTime = '07:00';
+    const sleepCycles = 5;
+    const timeZone = 'America/New_York';
+
+    const result = sleepTimeAdvisor(wakeUpTime, sleepCycles, timeZone);
+    expect(result.suggestedSleepTime).toBe('11:30 PM');
+    expect(result.message).toBe('To get 5 cycles of sleep, you should go to bed by 11:30 PM.');
   });
 });
