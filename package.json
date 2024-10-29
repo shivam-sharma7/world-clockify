@@ -1,6 +1,6 @@
 {
   "name": "world-clockify",
-  "version": "1.4.5",
+  "version": "1.5.5",
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
