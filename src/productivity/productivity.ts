@@ -146,3 +146,27 @@ export const sleepTimeAdvisor = (wakeUpTime: string, sleepCycles: number, prefer
     message: `To get ${sleepCycles} cycles of sleep, you should go to bed by ${suggestedSleepTime.toFormat('hh:mm a')}.`,
   };
 };
+
+interface EnergyLevelEntry {
+  time: string;
+  level: 'high' | 'medium' | 'low';
+}
+
+/**
+ *  Helps users monitor their energy levels throughout the day and suggests activities based on their current energy level.
+ * @param {string} energyLevels
+ */
+export const energyLevelTracker = (energyLevels: EnergyLevelEntry[]) => {
+  const activitySuggestions = energyLevels.map((entry) => {
+    const { time, level } = entry;
+    if (level === 'high') {
+      return { time, suggestion: 'Focus on high-priority tasks.' };
+    } else if (level === 'medium') {
+      return { time, suggestion: 'Engage in light tasks or exercise.' };
+    } else {
+      return { time, suggestion: 'Take a break or meditate.' };
+    }
+  });
+
+  return activitySuggestions;
+};
