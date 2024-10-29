@@ -23,6 +23,7 @@
 - [Focus Time Management](./guide/focusTimeManagement.md)
 - [Water Intake Reminder](./guide/waterIntakeReminder.md)
 - [Sleep Time Advisor](./guide/sleepTimeAdvisor.md)
+- [Energy Tracker](./guide/energyTracker.md)
 
 </details>
 

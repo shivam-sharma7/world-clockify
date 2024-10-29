@@ -4,6 +4,7 @@ import {
   focusTimeManager,
   waterIntakeReminder,
   sleepTimeAdvisor,
+  energyLevelTracker,
 } from '../src/productivity/productivity.js';
 describe('Time and productivity management', () => {
   it('should  work sessions and breaks for a user', () => {
@@ -81,5 +82,22 @@ describe('Time and productivity management', () => {
     const result = sleepTimeAdvisor(wakeUpTime, sleepCycles, timeZone);
     expect(result.suggestedSleepTime).toBe('11:30 PM');
     expect(result.message).toBe('To get 5 cycles of sleep, you should go to bed by 11:30 PM.');
+  });
+
+  it('should monitor user energy levels throughout the day', () => {
+    const energyLevels = [
+      { time: '08:00', level: 'high' as 'high' },
+      { time: '12:00', level: 'medium' as 'medium' },
+      { time: '15:00', level: 'low' as 'low' },
+      { time: '18:00', level: 'medium' as 'medium' },
+    ];
+    const expectedSuggestions = [
+      { time: '08:00', suggestion: 'Focus on high-priority tasks.' },
+      { time: '12:00', suggestion: 'Engage in light tasks or exercise.' },
+      { time: '15:00', suggestion: 'Take a break or meditate.' },
+      { time: '18:00', suggestion: 'Engage in light tasks or exercise.' },
+    ];
+    const suggestions = energyLevelTracker(energyLevels);
+    expect(suggestions).toEqual(expectedSuggestions);
   });
 });
