@@ -10,7 +10,6 @@
   },
   "files": [
     "dist",
-    "docs",
     "src",
     "LICENSE",
     "REDME.md",
