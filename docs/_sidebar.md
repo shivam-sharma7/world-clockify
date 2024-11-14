@@ -24,6 +24,7 @@
 - [Water Intake Reminder](./guide/waterIntakeReminder.md)
 - [Sleep Time Advisor](./guide/sleepTimeAdvisor.md)
 - [Energy Tracker](./guide/energyTracker.md)
+- [Maths Operations](./guide/maths.md)
 
 </details>
 
