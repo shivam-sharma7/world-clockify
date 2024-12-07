@@ -38,4 +38,12 @@ export const divide = (...args: number[]): number => {
   return rest.reduce((acc, num) => (num !== 0 ? acc / num : acc), first);
 };
 
-// TODO : Add more math operations
+/**
+ * Return the average of numbers
+ */
+
+export const average = (...args: number[]): number => {
+  if (args.length === 0) return 0;
+  const total = args.reduce((acc, num) => acc + num, 0);
+  return total / args.length;
+};
