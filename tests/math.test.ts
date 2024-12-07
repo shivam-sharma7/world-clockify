@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { sum, subtract, multiplication, divide } from '../src/maths/basic.js';
+import { sum, subtract, multiplication, divide, average } from '../src/maths/basic.js';
 
 describe('Math module helper', () => {
   it('should pass sum', () => {
@@ -24,5 +24,11 @@ describe('Math module helper', () => {
     let a = 10;
     let b = 20;
     expect(divide(a, b));
+  });
+  it('should pass average', () => {
+    let a = 10;
+    let b = 20;
+    let c = 30;
+    expect(average(a, b, c)).toBe(20);
   });
 });
